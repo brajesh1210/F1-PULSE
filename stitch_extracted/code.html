@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F1 PULSE - The Fastest Sport on Earth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@700;800;900&family=Hanken+Grotesk:wght@400;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "secondary": "#c6c6c7",
+                        "surface-container-highest": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#e9bcb5",
+                        "surface-tint": "#ffb4a8",
+                        "surface-variant": "#353534",
+                        "outline": "#af8781",
+                        "primary-fixed": "#ffdad4",
+                        "outline-variant": "#5e3f3a",
+                        "on-background": "#e5e2e1",
+                        "primary": "#ffb4a8",
+                        "background": "#131313",
+                        "on-primary-container": "#fff2f0",
+                        "tertiary": "#c8c6c5",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#410100",
+                        "secondary-container": "#454747",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "inverse-primary": "#c00500",
+                        "on-primary": "#680200",
+                        "primary-container": "#e10600",
+                        "on-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary-container": "#717070",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#3a3939",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-primary-fixed-variant": "#930300",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-tertiary": "#313030",
+                        "on-tertiary-container": "#f8f5f4",
+                        "on-secondary": "#2f3131"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        base: "8px",
+                        gutter: "24px",
+                        "section-gap-desktop": "160px",
+                        "grid-margin": "64px",
+                        "section-gap-mobile": "80px"
+                    },
+                    fontFamily: {
+                        "title-md": ["Hanken Grotesk"],
+                        "display-hero": ["Anybody"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Anybody"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Anybody"]
+                    },
+                    fontSize: {
+                        "title-md": ["24px", { lineHeight: "140%", fontWeight: "600" }],
+                        "display-hero": ["96px", { lineHeight: "100%", letterSpacing: "0.05em", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "160%", fontWeight: "400" }],
+                        "label-caps": ["12px", { lineHeight: "100%", letterSpacing: "0.15em", fontWeight: "500" }],
+                        "headline-lg": ["48px", { lineHeight: "110%", letterSpacing: "0.02em", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "160%", fontWeight: "400" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "110%", letterSpacing: "0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-red {
+            box-shadow: 0 0 15px -5px #e10600;
+        }
+        .glass-card {
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-hover:hover {
+            box-shadow: 0 0 15px -5px #e10600;
+            border-color: rgba(225, 6, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .photo-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+        }
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #e10600;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg antialiased selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-margin h-[70px] bg-background/80 backdrop-blur-md border-b border-white/10 flat no shadows">
+<div class="flex items-center gap-2">
+<div class="w-1 h-6 bg-primary-container"></div>
+<a class="font-headline-lg text-headline-lg md:text-headline-lg font-black text-on-surface tracking-tighter" href="#">F1 PULSE</a>
+</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-label-caps text-label-caps text-on-surface border-b-2 border-primary-container pb-1 nav-underline" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors duration-300 nav-underline" href="#">Races</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors duration-300 nav-underline" href="#">Drivers</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors duration-300 nav-underline" href="#">Rivalries</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors duration-300 nav-underline" href="#">FAQ</a>
+</div>
+<button class="hidden md:flex items-center justify-center px-6 py-3 bg-primary-container text-white font-label-caps text-label-caps uppercase transition-transform hover:-translate-y-0.5 glow-red">
+            EXPLORE F1
+        </button>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined text-title-md">menu</span>
+</button>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-black">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3Vsi-oydjqhNJK6RMCxT_PPTLX5lxYF-tHfr-WpfzLDxtqpolYod1PCDylB5AaqbmyH38mQ4AIDLS4WzIZuiLLMedm4xW8gUb2A_O-eEDK1ryuIfadnkV8Bx8mjdeFtg04b65ErqaYieTbgWv6HIWPQXPcaPOMNSMAvP7018dY6RmjowQOez1h5O-slmVEYQ0oAcu1AXlWoLtVNiZDJQlFRHKKTRUFDe4T3xwZ3jMNYPbInBfLJhkFsR1oULScCRl0FKLKGVARxK3')"></div>
+<div class="absolute inset-0 photo-overlay"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center px-grid-margin mt-16 max-w-5xl mx-auto gap-base">
+<h1 class="font-display-hero text-[48px] md:text-display-hero uppercase text-white drop-shadow-lg">
+                    THE FASTEST SPORT ON EARTH
+                </h1>
+<p class="font-body-lg text-body-lg md:text-title-md text-on-surface-variant max-w-2xl mx-auto font-title-md">
+                    From lights out to chequered flag — feel every heartbeat of Formula 1.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 mt-8">
+<button class="px-8 py-4 bg-primary-container text-white font-label-caps text-label-caps uppercase hover:bg-primary-fixed hover:text-on-primary-fixed transition-all glow-red">
+                        EXPLORE F1
+                    </button>
+<button class="px-8 py-4 border border-white/20 text-white font-label-caps text-label-caps uppercase hover:bg-white/10 hover:border-white transition-all">
+                        MEET THE LEGENDS
+                    </button>
+</div>
+</div>
+</section>
+<!-- WHY WATCH F1 Section -->
+<section class="py-section-gap-desktop px-grid-margin max-w-[1440px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-white mb-16 flex items-center gap-4">
+<span class="w-2 h-8 bg-primary-container inline-block"></span>
+                WHY WATCH F1
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="glass-card glass-card-hover p-8 relative flex flex-col gap-4 overflow-hidden group min-h-[300px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-primary-container">speed</span>
+<h3 class="font-title-md text-title-md text-white uppercase mt-auto">SPEED</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass-card glass-card-hover p-8 relative flex flex-col gap-4 overflow-hidden group min-h-[300px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-primary-container">strategy</span>
+<h3 class="font-title-md text-title-md text-white uppercase mt-auto">STRATEGY</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass-card glass-card-hover p-8 relative flex flex-col gap-4 overflow-hidden group min-h-[300px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-primary-container">swords</span>
+<h3 class="font-title-md text-title-md text-white uppercase mt-auto">RIVALRY</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p>
+</div>
+<!-- Card 4 -->
+<div class="glass-card glass-card-hover p-8 relative flex flex-col gap-4 overflow-hidden group min-h-[300px]">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-primary-container">memory</span>
+<h3 class="font-title-md text-title-md text-white uppercase mt-auto">TECHNOLOGY</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t-4 border-primary-container shadow-2xl shadow-primary/10 w-full flex flex-col items-center gap-base py-section-gap-desktop p-gutter relative z-10">
+<div class="flex flex-col items-center text-center gap-8 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-white uppercase">JOIN THE WORLD'S FASTEST FANDOM</h2>
+<button class="px-8 py-4 bg-primary-container text-white font-label-caps text-label-caps uppercase hover:bg-primary-fixed hover:text-on-primary-fixed transition-all glow-red">
+                    SUBSCRIBE TO PULSE
+                </button>
+</div>
+<div class="w-full h-px bg-white/10 my-16"></div>
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-[1440px] px-grid-margin gap-8">
+<div class="flex items-center gap-2">
+<div class="w-1 h-6 bg-primary-container"></div>
+<span class="font-headline-lg text-title-md font-bold text-white tracking-tighter">F1 PULSE</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Contact</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Media Kit</a>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-8 text-center opacity-50">© 2024 F1 PULSE. ALL RIGHTS RESERVED.</p>
+</footer>
+</main>
+</body></html>

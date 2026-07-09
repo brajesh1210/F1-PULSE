@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 PULSE — Feel the Speed</title>
+  <meta name="description" content="F1 PULSE — A cinematic scroll-driven Formula 1 experience. Scroll to scrub through race footage at full speed.">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23E10600'/></svg>">
+
+  <!-- Google Fonts — Material Symbols for icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ Preloader ═══ -->
+  <div id="preloader">
+    <div class="preloader-logo">F1 <span>PULSE</span></div>
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+    <p class="preloader-text" id="progress-text">Loading experience... 0%</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR (fixed top, over everything)
+       ═══════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <div class="nav-brand-accent"></div>
+      <a href="#" class="nav-brand-text">F1 PULSE</a>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="#hero-section" class="nav-link active">Home</a>
+      <a href="#races" class="nav-link">Races</a>
+      <a href="#drivers" class="nav-link">Drivers</a>
+      <a href="#rivalries" class="nav-link">Rivalries</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </div>
+    <a href="#" class="nav-cta">EXPLORE F1</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO — Scroll-driven frame scrubber
+       ═══════════════════════════════════════ -->
+  <section id="hero-section">
+    <!-- Frame Display -->
+    <img id="frame-display" alt="F1 Frame" />
+
+    <!-- Cinematic Vignette -->
+    <div id="vignette"></div>
+
+    <!-- Overlay UI -->
+    <div id="overlay">
+      <!-- Bottom Left — Hero Text -->
+      <div class="overlay-content">
+        <h1 class="overlay-headline" id="overlay-headline">THE FASTEST SPORT ON EARTH</h1>
+        <p class="overlay-subtext" id="overlay-subtext">Scroll to feel the speed</p>
+        <a href="#why-f1" class="overlay-cta" id="overlay-cta">ENTER F1 PULSE →</a>
+      </div>
+
+      <!-- Right — Scroll Progress -->
+      <div class="scroll-progress-track">
+        <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
+      </div>
+      <span class="scroll-progress-label">PROGRESS</span>
+
+      <!-- Frame Counter -->
+      <span class="frame-counter" id="frame-counter">001 / 180</span>
+
+      <!-- Scroll Hint -->
+      <div class="scroll-hint" id="scroll-hint">
+        <div class="scroll-hint-line"></div>
+        <div class="scroll-hint-arrow"></div>
+      </div>
+    </div>
+
+    <!-- Scroll Spacer (creates scroll distance for frame scrubbing) -->
+    <div id="scroll-spacer"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       WHY WATCH F1 SECTION
+       ═══════════════════════════════════════ -->
+  <section class="section-why-f1" id="why-f1">
+    <div class="section-container">
+      <h2 class="section-heading">
+        <span class="heading-accent"></span>
+        WHY WATCH F1
+      </h2>
+      <div class="cards-grid">
+        <!-- Card 1 — Speed -->
+        <div class="glass-card">
+          <div class="card-accent-bar"></div>
+          <span class="material-symbols-outlined card-icon">speed</span>
+          <h3 class="card-title">SPEED</h3>
+          <p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p>
+        </div>
+        <!-- Card 2 — Strategy -->
+        <div class="glass-card">
+          <div class="card-accent-bar"></div>
+          <span class="material-symbols-outlined card-icon">strategy</span>
+          <h3 class="card-title">STRATEGY</h3>
+          <p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p>
+        </div>
+        <!-- Card 3 — Rivalry -->
+        <div class="glass-card">
+          <div class="card-accent-bar"></div>
+          <span class="material-symbols-outlined card-icon">swords</span>
+          <h3 class="card-title">RIVALRY</h3>
+          <p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p>
+        </div>
+        <!-- Card 4 — Technology -->
+        <div class="glass-card">
+          <div class="card-accent-bar"></div>
+          <span class="material-symbols-outlined card-icon">memory</span>
+          <h3 class="card-title">TECHNOLOGY</h3>
+          <p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       1. GRAND PRIX SPOTLIGHT
+       ═══════════════════════════════════════ -->
+  <section class="section-dark" id="races">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        GRAND PRIX SPOTLIGHT
+      </h2>
+      <p class="section-subtitle reveal">Where legends are made and records shattered — across the most iconic circuits on Earth.</p>
+      <div class="race-grid">
+        <div class="race-card reveal">
+          <div class="race-card-img" style="background-image:url('images/monaco.png')"></div>
+          <div class="race-card-overlay"></div>
+          <div class="race-card-content">
+            <div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div>
+            <h3 class="race-card-title">MONACO GRAND PRIX</h3>
+            <p class="race-card-location">Monte Carlo, Monaco</p>
+            <p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p>
+          </div>
+        </div>
+        <div class="race-card reveal">
+          <div class="race-card-img" style="background-image:url('images/monza.png')"></div>
+          <div class="race-card-overlay"></div>
+          <div class="race-card-content">
+            <div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div>
+            <h3 class="race-card-title">ITALIAN GRAND PRIX</h3>
+            <p class="race-card-location">Monza, Italy</p>
+            <p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p>
+          </div>
+        </div>
+        <div class="race-card reveal">
+          <div class="race-card-img" style="background-image:url('images/silverstone.png')"></div>
+          <div class="race-card-overlay"></div>
+          <div class="race-card-content">
+            <div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div>
+            <h3 class="race-card-title">BRITISH GRAND PRIX</h3>
+            <p class="race-card-location">Silverstone, England</p>
+            <p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p>
+          </div>
+        </div>
+        <div class="race-card reveal">
+          <div class="race-card-img" style="background-image:url('images/spa.png')"></div>
+          <div class="race-card-overlay"></div>
+          <div class="race-card-content">
+            <div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div>
+            <h3 class="race-card-title">BELGIAN GRAND PRIX</h3>
+            <p class="race-card-location">Spa-Francorchamps, Belgium</p>
+            <p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       2. THE DRIVERS
+       ═══════════════════════════════════════ -->
+  <section class="section-alt" id="drivers">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        THE DRIVERS
+      </h2>
+      <p class="section-subtitle reveal">Heroes in helmets. Gladiators at 300 km/h. The fastest humans alive.</p>
+      <div class="driver-tabs reveal">
+        <button class="driver-tab active" data-tab="current">Current Grid</button>
+        <button class="driver-tab" data-tab="legends">Legends</button>
+      </div>
+      <div class="driver-grid" id="driver-grid-current">
+        <div class="driver-card reveal">
+          <div class="driver-card-visual">
+            <span class="driver-number">#1</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">MAX VERSTAPPEN</h3>
+            <p class="driver-team">Oracle Red Bull Racing</p>
+            <p class="driver-stat">4× World Champion</p>
+            <p class="driver-caption">"The predator. Relentless, ruthless, record-breaking."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual">
+            <span class="driver-number">#44</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">LEWIS HAMILTON</h3>
+            <p class="driver-team">Scuderia Ferrari</p>
+            <p class="driver-stat">7× World Champion</p>
+            <p class="driver-caption">"The GOAT debate personified. Still hungry. Still dangerous."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual">
+            <span class="driver-number">#16</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">CHARLES LECLERC</h3>
+            <p class="driver-team">Scuderia Ferrari</p>
+            <p class="driver-stat">Monaco's Favourite Son</p>
+            <p class="driver-caption">"Raw speed and heartbreak. The prince who races with fire."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual">
+            <span class="driver-number">#4</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">LANDO NORRIS</h3>
+            <p class="driver-team">McLaren F1 Team</p>
+            <p class="driver-stat">The Rising Challenger</p>
+            <p class="driver-caption">"Gen-Z's champion. Fast, fearless, and fan-favourite."</p>
+          </div>
+        </div>
+      </div>
+      <div class="driver-grid hidden" id="driver-grid-legends">
+        <div class="driver-card reveal">
+          <div class="driver-card-visual legend">
+            <span class="driver-number">#12</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">AYRTON SENNA</h3>
+            <p class="driver-team">McLaren / Williams</p>
+            <p class="driver-stat">3× World Champion</p>
+            <p class="driver-caption">"The maestro of the rain. Racing's eternal flame."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual legend">
+            <span class="driver-number">#1</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">MICHAEL SCHUMACHER</h3>
+            <p class="driver-team">Ferrari / Benetton</p>
+            <p class="driver-stat">7× World Champion</p>
+            <p class="driver-caption">"The Kaiser. Records that stood for a generation."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual legend">
+            <span class="driver-number">#1</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">NIKI LAUDA</h3>
+            <p class="driver-team">Ferrari / McLaren</p>
+            <p class="driver-stat">3× World Champion</p>
+            <p class="driver-caption">"Walked through fire. Came back. Won again."</p>
+          </div>
+        </div>
+        <div class="driver-card reveal">
+          <div class="driver-card-visual legend">
+            <span class="driver-number">#5</span>
+          </div>
+          <div class="driver-info">
+            <h3 class="driver-name">SEBASTIAN VETTEL</h3>
+            <p class="driver-team">Red Bull / Ferrari</p>
+            <p class="driver-stat">4× World Champion</p>
+            <p class="driver-caption">"The finger wag. The dominance. A true gentleman racer."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       3. GREATEST RIVALRIES
+       ═══════════════════════════════════════ -->
+  <section class="section-dark" id="rivalries">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        GREATEST RIVALRIES
+      </h2>
+      <p class="section-subtitle reveal">When two titans collide, the world watches. These battles defined eras.</p>
+      <div class="rivalries-stack">
+        <div class="rivalry-card reveal">
+          <div class="rivalry-side rivalry-left" style="background-image:url('frames/frame_0010.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>AYRTON SENNA</h3>
+              <p>McLaren</p>
+            </div>
+          </div>
+          <div class="rivalry-vs">
+            <span class="vs-text">VS</span>
+            <div class="vs-glow"></div>
+          </div>
+          <div class="rivalry-side rivalry-right" style="background-image:url('frames/frame_0050.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>ALAIN PROST</h3>
+              <p>Ferrari</p>
+            </div>
+          </div>
+          <div class="rivalry-meta">
+            <h4 class="rivalry-title">THE PROFESSOR VS THE MAGIC</h4>
+            <p class="rivalry-era">1988 – 1993</p>
+            <p class="rivalry-desc">Two teammates at war. Calculated precision against raw genius. Their collisions at Suzuka changed the sport forever.</p>
+          </div>
+        </div>
+        <div class="rivalry-card reveal">
+          <div class="rivalry-side rivalry-left" style="background-image:url('frames/frame_0080.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>LEWIS HAMILTON</h3>
+              <p>Mercedes</p>
+            </div>
+          </div>
+          <div class="rivalry-vs">
+            <span class="vs-text">VS</span>
+            <div class="vs-glow"></div>
+          </div>
+          <div class="rivalry-side rivalry-right" style="background-image:url('frames/frame_0120.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>MAX VERSTAPPEN</h3>
+              <p>Red Bull</p>
+            </div>
+          </div>
+          <div class="rivalry-meta">
+            <h4 class="rivalry-title">THE ESTABLISHED VS THE INSURGENT</h4>
+            <p class="rivalry-era">2021 – Present</p>
+            <p class="rivalry-desc">Abu Dhabi 2021. The last lap. One corner. Everything on the line. The most dramatic title fight in F1 history.</p>
+          </div>
+        </div>
+        <div class="rivalry-card reveal">
+          <div class="rivalry-side rivalry-left" style="background-image:url('frames/frame_0140.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>NIKI LAUDA</h3>
+              <p>Ferrari</p>
+            </div>
+          </div>
+          <div class="rivalry-vs">
+            <span class="vs-text">VS</span>
+            <div class="vs-glow"></div>
+          </div>
+          <div class="rivalry-side rivalry-right" style="background-image:url('frames/frame_0170.jpg')">
+            <div class="rivalry-side-overlay"></div>
+            <div class="rivalry-driver-info">
+              <h3>JAMES HUNT</h3>
+              <p>McLaren</p>
+            </div>
+          </div>
+          <div class="rivalry-meta">
+            <h4 class="rivalry-title">THE RAT VS THE PLAYBOY</h4>
+            <p class="rivalry-era">1976</p>
+            <p class="rivalry-desc">Fire. Rain. A near-death crash. And a championship decided by one point in the rain at Fuji. Pure cinema.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       4. THE THRILL OF F1
+       ═══════════════════════════════════════ -->
+  <section class="section-alt" id="thrills">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        THE THRILL OF F1
+      </h2>
+      <div class="thrill-block reveal">
+        <div class="thrill-image">
+          <img src="images/sparks.png" alt="F1 Sparks and Drama" loading="lazy">
+        </div>
+        <div class="thrill-text">
+          <h3 class="thrill-title">CRASHES & DRAMA</h3>
+          <p class="thrill-copy">Carbon fiber shatters at 300 km/h. Wheels interlock. Safety cars scramble the field. In F1, one moment of chaos rewrites the entire race — and sometimes, the entire season. It's not if drama will strike, but when.</p>
+        </div>
+      </div>
+      <div class="thrill-block reverse reveal">
+        <div class="thrill-image">
+          <img src="frames/frame_0030.jpg" alt="Qualifying Pressure" loading="lazy">
+        </div>
+        <div class="thrill-text">
+          <h3 class="thrill-title">QUALIFYING PRESSURE</h3>
+          <p class="thrill-copy">One lap. One chance. Thousandths of a second separate heroes from also-rans. Qualifying is where drivers bare their souls — pushing the car to its absolute limit with no margin, no safety net, no second chance.</p>
+        </div>
+      </div>
+      <div class="thrill-block reveal">
+        <div class="thrill-image">
+          <img src="images/wheel_battle.png" alt="Wheel to Wheel" loading="lazy">
+        </div>
+        <div class="thrill-text">
+          <h3 class="thrill-title">WHEEL-TO-WHEEL BATTLES</h3>
+          <p class="thrill-copy">Side by side into a braking zone at 340 km/h. Mirrors full of your rival's front wing. Nerves of steel, reflexes of a fighter pilot. This is wheel-to-wheel racing — the purest form of competition on four wheels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       5. ENGINEERING BEASTS
+       ═══════════════════════════════════════ -->
+  <section class="section-dark section-tech" id="tech">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        ENGINEERING BEASTS
+      </h2>
+      <p class="section-subtitle reveal">The most advanced racing machines ever built. Part car. Part spaceship. All speed.</p>
+      <div class="tech-showcase reveal">
+        <div class="tech-hero-img">
+          <img src="images/car_tech.png" alt="F1 Car Technical" loading="lazy">
+        </div>
+        <div class="tech-stats-grid">
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">local_fire_department</span>
+            <h4 class="tech-stat-value">1,000+ HP</h4>
+            <p class="tech-stat-label">Combined Power Output</p>
+          </div>
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">bolt</span>
+            <h4 class="tech-stat-value">1.6L V6 TURBO</h4>
+            <p class="tech-stat-label">Hybrid Power Unit</p>
+          </div>
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">speed</span>
+            <h4 class="tech-stat-value">370 KM/H</h4>
+            <p class="tech-stat-label">Top Speed</p>
+          </div>
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">compress</span>
+            <h4 class="tech-stat-value">5G FORCE</h4>
+            <p class="tech-stat-label">Cornering Downforce</p>
+          </div>
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">timer</span>
+            <h4 class="tech-stat-value">1.8 SEC</h4>
+            <p class="tech-stat-label">Pit Stop Record</p>
+          </div>
+          <div class="tech-stat-card">
+            <span class="material-symbols-outlined tech-stat-icon">diamond</span>
+            <h4 class="tech-stat-value">798 KG</h4>
+            <p class="tech-stat-label">Carbon Fiber Monocoque</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       6. CAPTURED SPEED — GALLERY
+       ═══════════════════════════════════════ -->
+  <section class="section-alt" id="gallery">
+    <div class="section-container">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        CAPTURED SPEED
+      </h2>
+      <p class="section-subtitle reveal">Frozen moments of pure velocity. Every frame tells a story of speed, precision, and glory.</p>
+      <div class="gallery-masonry reveal">
+        <div class="gallery-item gallery-tall">
+          <img src="images/monaco.png" alt="Monaco night race" loading="lazy">
+          <div class="gallery-caption"><span>Monaco Under Lights</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="frames/frame_0005.jpg" alt="F1 action" loading="lazy">
+          <div class="gallery-caption"><span>Lights Out</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/sparks.png" alt="Sparks at night" loading="lazy">
+          <div class="gallery-caption"><span>Sparks in the Dark</span></div>
+        </div>
+        <div class="gallery-item gallery-tall">
+          <img src="images/wheel_battle.png" alt="Side by side" loading="lazy">
+          <div class="gallery-caption"><span>Wheel-to-Wheel</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="frames/frame_0060.jpg" alt="Pit stop" loading="lazy">
+          <div class="gallery-caption"><span>Pit Stop Precision</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/spa.png" alt="Wet weather" loading="lazy">
+          <div class="gallery-caption"><span>Rain Masters</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="frames/frame_0100.jpg" alt="Cockpit" loading="lazy">
+          <div class="gallery-caption"><span>Inside the Cockpit</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/car_tech.png" alt="Technical" loading="lazy">
+          <div class="gallery-caption"><span>Engineering Art</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       7. FAQ FOR BEGINNERS
+       ═══════════════════════════════════════ -->
+  <section class="section-dark" id="faq">
+    <div class="section-container section-container-narrow">
+      <h2 class="section-heading reveal">
+        <span class="heading-accent"></span>
+        F1 FOR BEGINNERS
+      </h2>
+      <p class="section-subtitle reveal">New to Formula 1? Start here. Everything you need to know to join the fastest sport on earth.</p>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is Formula 1?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>Formula 1 is the pinnacle of open-wheel racing — the fastest, most technologically advanced, and most-watched motorsport series on the planet. Twenty drivers, ten teams, and over 20 races across five continents every season. It's a blend of engineering brilliance, athletic endurance, and strategic genius.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>How long is a race?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>A typical Grand Prix covers approximately 305 km (190 miles) and lasts around 1.5 to 2 hours. Races are limited to a maximum of 2 hours. Some circuits have fewer laps (like Monaco at 78 laps) while others have more (like Monza at 53 laps), but the total distance stays roughly the same.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Who are the top drivers right now?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>Max Verstappen (Red Bull) is the reigning champion and dominant force. Lewis Hamilton (Ferrari) holds the record for most wins ever. Charles Leclerc and Lando Norris are the rising challengers gunning for the crown. The grid is stacked with talent — any race weekend can produce a surprise.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Why is F1 so popular?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>F1 combines extreme speed, cutting-edge technology, dramatic rivalries, and global glamour like no other sport. The Netflix series "Drive to Survive" brought millions of new fans, but the real hook is the unpredictability — rain, crashes, pit stop failures, strategy gambles. Every race is a mini-movie.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is qualifying?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>Qualifying takes place on Saturday before the Sunday race. Drivers compete to set the fastest single lap time. It's a three-round knockout: Q1 eliminates the slowest 5, Q2 eliminates the next 5, and Q3 is a shootout among the top 10 for pole position. The fastest driver starts at the front of the grid.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is DRS and a pit stop?</span>
+            <span class="material-symbols-outlined faq-icon">expand_more</span>
+          </button>
+          <div class="faq-answer">
+            <p>DRS (Drag Reduction System) opens a flap on the rear wing to reduce drag and boost straight-line speed by ~15 km/h — but only when a driver is within 1 second of the car ahead in designated zones. A pit stop is when a car pulls into the pit lane to change tires, make repairs, or adjust strategy. The fastest pit stops take under 2 seconds to change all four wheels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-cta-area">
+      <h2 class="footer-headline">JOIN THE WORLD'S FASTEST FANDOM</h2>
+      <a href="#" class="footer-cta-button">SUBSCRIBE TO PULSE</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <div class="nav-brand-accent"></div>
+        <span class="footer-brand-text">F1 PULSE</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Media Kit</a>
+      </div>
+    </div>
+    <p class="footer-copyright">© 2025 F1 PULSE. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
