@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div id="cursor-outer"></div>
+  <div id="cursor-inner"></div>
+
+  <!-- Particle Background (WebGL Aether) -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Decorative Aether Layers -->
+  <div class="f1-hero-glow-red"></div>
+  <div class="f1-hero-glow-blue"></div>
+  <div class="f1-carbon-overlay"></div>
+  <div class="f1-speed-line" style="top: 35%;"></div>
+  <div class="f1-speed-line" style="top: 65%; animation-delay: -2s; opacity: 0.1;"></div>
 
   <!-- ═══ Preloader ═══ -->
   <div id="preloader">
@@ -95,34 +108,89 @@
         <span class="heading-accent"></span>
         WHY WATCH F1
       </h2>
-      <div class="cards-grid">
-        <!-- Card 1 — Speed -->
-        <div class="glass-card">
-          <div class="card-accent-bar"></div>
-          <span class="material-symbols-outlined card-icon">speed</span>
-          <h3 class="card-title">SPEED</h3>
-          <p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p>
+      <div class="marquee-wrapper">
+        <div class="marquee-container">
+          <div class="marquee-track track-left">
+            <!-- Original Set + Duplicates (x5) = 6 sets total to ensure seamless loop -->
+            <div class="marquee-set">
+              <div class="glass-card marquee-card">
+                <div class="card-shimmer"></div>
+                <div class="card-accent-bar"></div>
+                <span class="material-symbols-outlined card-icon">speed</span>
+                <h3 class="card-title">SPEED</h3>
+                <p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p>
+              </div>
+              <div class="glass-card marquee-card">
+                <div class="card-shimmer"></div>
+                <div class="card-accent-bar"></div>
+                <span class="material-symbols-outlined card-icon">strategy</span>
+                <h3 class="card-title">STRATEGY</h3>
+                <p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p>
+              </div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">speed</span><h3 class="card-title">SPEED</h3><p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">strategy</span><h3 class="card-title">STRATEGY</h3><p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">speed</span><h3 class="card-title">SPEED</h3><p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">strategy</span><h3 class="card-title">STRATEGY</h3><p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">speed</span><h3 class="card-title">SPEED</h3><p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">strategy</span><h3 class="card-title">STRATEGY</h3><p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">speed</span><h3 class="card-title">SPEED</h3><p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">strategy</span><h3 class="card-title">STRATEGY</h3><p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">speed</span><h3 class="card-title">SPEED</h3><p class="card-text">Cars hitting 370 km/h, pushing the absolute limits of physics and human reaction times on tracks around the world.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">strategy</span><h3 class="card-title">STRATEGY</h3><p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p></div>
+            </div>
+          </div>
         </div>
-        <!-- Card 2 — Strategy -->
-        <div class="glass-card">
-          <div class="card-accent-bar"></div>
-          <span class="material-symbols-outlined card-icon">strategy</span>
-          <h3 class="card-title">STRATEGY</h3>
-          <p class="card-text">Tire choices, pit timing, and split-second decisions that can win or lose a race before the checkered flag falls.</p>
-        </div>
-        <!-- Card 3 — Rivalry -->
-        <div class="glass-card">
-          <div class="card-accent-bar"></div>
-          <span class="material-symbols-outlined card-icon">swords</span>
-          <h3 class="card-title">RIVALRY</h3>
-          <p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p>
-        </div>
-        <!-- Card 4 — Technology -->
-        <div class="glass-card">
-          <div class="card-accent-bar"></div>
-          <span class="material-symbols-outlined card-icon">memory</span>
-          <h3 class="card-title">TECHNOLOGY</h3>
-          <p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p>
+
+        <div class="marquee-container">
+          <div class="marquee-track track-right">
+            <!-- Track 2: Right (Rivalry + Tech) -->
+            <div class="marquee-set">
+              <div class="glass-card marquee-card">
+                <div class="card-shimmer"></div>
+                <div class="card-accent-bar"></div>
+                <span class="material-symbols-outlined card-icon">swords</span>
+                <h3 class="card-title">RIVALRY</h3>
+                <p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p>
+              </div>
+              <div class="glass-card marquee-card">
+                <div class="card-shimmer"></div>
+                <div class="card-accent-bar"></div>
+                <span class="material-symbols-outlined card-icon">memory</span>
+                <h3 class="card-title">TECHNOLOGY</h3>
+                <p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p>
+              </div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">swords</span><h3 class="card-title">RIVALRY</h3><p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">memory</span><h3 class="card-title">TECHNOLOGY</h3><p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">swords</span><h3 class="card-title">RIVALRY</h3><p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">memory</span><h3 class="card-title">TECHNOLOGY</h3><p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">swords</span><h3 class="card-title">RIVALRY</h3><p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">memory</span><h3 class="card-title">TECHNOLOGY</h3><p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">swords</span><h3 class="card-title">RIVALRY</h3><p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">memory</span><h3 class="card-title">TECHNOLOGY</h3><p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p></div>
+            </div>
+            <div class="marquee-set">
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">swords</span><h3 class="card-title">RIVALRY</h3><p class="card-text">Teammates turned enemies. Generational clashes. The fiercest personal battles played out at 200mph.</p></div>
+              <div class="glass-card marquee-card"><div class="card-shimmer"></div><div class="card-accent-bar"></div><span class="material-symbols-outlined card-icon">memory</span><h3 class="card-title">TECHNOLOGY</h3><p class="card-text">Most advanced machines ever built, serving as the ultimate testing ground for automotive innovation.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -138,45 +206,102 @@
         GRAND PRIX SPOTLIGHT
       </h2>
       <p class="section-subtitle reveal">Where legends are made and records shattered — across the most iconic circuits on Earth.</p>
-      <div class="race-grid">
-        <div class="race-card reveal">
-          <div class="race-card-img" style="background-image:url('images/monaco.png')"></div>
-          <div class="race-card-overlay"></div>
-          <div class="race-card-content">
-            <div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div>
-            <h3 class="race-card-title">MONACO GRAND PRIX</h3>
-            <p class="race-card-location">Monte Carlo, Monaco</p>
-            <p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p>
+      <div class="marquee-wrapper">
+        <div class="marquee-container">
+          <div class="marquee-track track-left">
+            <!-- Track 1: Monaco + Monza (x6 for safety) -->
+            <div class="marquee-set">
+              <div class="race-card">
+                <div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div>
+                <div class="race-card-overlay dual-gradient"></div>
+                <div class="race-card-content">
+                  <div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div>
+                  <h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3>
+                  <p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p>
+                  <p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p>
+                </div>
+              </div>
+              <div class="race-card">
+                <div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div>
+                <div class="race-card-overlay dual-gradient"></div>
+                <div class="race-card-content">
+                  <div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div>
+                  <h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3>
+                  <p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p>
+                  <p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Duplicates -->
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div><h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p><p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div><h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p><p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div><h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p><p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div><h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p><p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div><h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p><p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div><h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p><p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div><h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p><p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div><h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p><p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monaco.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Street Circuit</span><span class="race-pill">Iconic</span></div><h3 class="race-card-title shimmer-text">MONACO GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monte Carlo, Monaco</p><p class="race-card-hook">Glamour, barriers, and zero margin for error through the tightest streets in racing.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/monza.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div><h3 class="race-card-title shimmer-text">ITALIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Monza, Italy</p><p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p></div></div>
+            </div>
           </div>
         </div>
-        <div class="race-card reveal">
-          <div class="race-card-img" style="background-image:url('images/monza.png')"></div>
-          <div class="race-card-overlay"></div>
-          <div class="race-card-content">
-            <div class="race-pills"><span class="race-pill">Temple of Speed</span><span class="race-pill">Historic</span></div>
-            <h3 class="race-card-title">ITALIAN GRAND PRIX</h3>
-            <p class="race-card-location">Monza, Italy</p>
-            <p class="race-card-hook">The cathedral of speed where slipstreaming battles write history every September.</p>
-          </div>
-        </div>
-        <div class="race-card reveal">
-          <div class="race-card-img" style="background-image:url('images/silverstone.png')"></div>
-          <div class="race-card-overlay"></div>
-          <div class="race-card-content">
-            <div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div>
-            <h3 class="race-card-title">BRITISH GRAND PRIX</h3>
-            <p class="race-card-location">Silverstone, England</p>
-            <p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p>
-          </div>
-        </div>
-        <div class="race-card reveal">
-          <div class="race-card-img" style="background-image:url('images/spa.png')"></div>
-          <div class="race-card-overlay"></div>
-          <div class="race-card-content">
-            <div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div>
-            <h3 class="race-card-title">BELGIAN GRAND PRIX</h3>
-            <p class="race-card-location">Spa-Francorchamps, Belgium</p>
-            <p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p>
+
+        <div class="marquee-container">
+          <div class="marquee-track track-right">
+            <!-- Track 2: Silverstone + Spa (x6 for safety) -->
+            <div class="marquee-set">
+              <div class="race-card">
+                <div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div>
+                <div class="race-card-overlay dual-gradient"></div>
+                <div class="race-card-content">
+                  <div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div>
+                  <h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3>
+                  <p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p>
+                  <p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p>
+                </div>
+              </div>
+              <div class="race-card">
+                <div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div>
+                <div class="race-card-overlay dual-gradient"></div>
+                <div class="race-card-content">
+                  <div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div>
+                  <h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3>
+                  <p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p>
+                  <p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Duplicates -->
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div><h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p><p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div><h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p><p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div><h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p><p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div><h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p><p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div><h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p><p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div><h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p><p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div><h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p><p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div><h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p><p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p></div></div>
+            </div>
+            <div class="marquee-set">
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/silverstone.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">High Speed</span><span class="race-pill">Home of F1</span></div><h3 class="race-card-title shimmer-text">BRITISH GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Silverstone, England</p><p class="race-card-hook">Where Formula 1 was born — high-speed corners and unpredictable British weather.</p></div></div>
+              <div class="race-card"><div class="race-card-img"><div class="race-card-img-inner" style="background-image:url('images/spa.png')"></div></div><div class="race-card-overlay dual-gradient"></div><div class="race-card-content"><div class="race-pills"><span class="race-pill">Weather Chaos</span><span class="race-pill">Legendary</span></div><h3 class="race-card-title shimmer-text">BELGIAN GRAND PRIX</h3><p class="race-card-location"><span class="material-symbols-outlined location-pin">location_on</span> Spa-Francorchamps, Belgium</p><p class="race-card-hook">Eau Rouge. Rain. Elevation. The ultimate driver's circuit through the Ardennes forest.</p></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,45 +323,57 @@
         <button class="driver-tab" data-tab="legends">Legends</button>
       </div>
       <div class="driver-grid" id="driver-grid-current">
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="redbull">
           <div class="driver-card-visual">
-            <span class="driver-number">#1</span>
+            <img src="https://media.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png" alt="Max Verstappen">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">1</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">MAX VERSTAPPEN</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Oracle Red Bull Racing</p>
             <p class="driver-stat">4× World Champion</p>
             <p class="driver-caption">"The predator. Relentless, ruthless, record-breaking."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="ferrari">
           <div class="driver-card-visual">
-            <span class="driver-number">#44</span>
+            <img src="https://media.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png" alt="Lewis Hamilton">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">44</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">LEWIS HAMILTON</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Scuderia Ferrari</p>
             <p class="driver-stat">7× World Champion</p>
             <p class="driver-caption">"The GOAT debate personified. Still hungry. Still dangerous."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="ferrari">
           <div class="driver-card-visual">
-            <span class="driver-number">#16</span>
+            <img src="https://media.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png" alt="Charles Leclerc">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">16</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">CHARLES LECLERC</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Scuderia Ferrari</p>
             <p class="driver-stat">Monaco's Favourite Son</p>
             <p class="driver-caption">"Raw speed and heartbreak. The prince who races with fire."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="mclaren">
           <div class="driver-card-visual">
-            <span class="driver-number">#4</span>
+            <img src="https://media.formula1.com/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png" alt="Lando Norris">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">4</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">LANDO NORRIS</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">McLaren F1 Team</p>
             <p class="driver-stat">The Rising Challenger</p>
             <p class="driver-caption">"Gen-Z's champion. Fast, fearless, and fan-favourite."</p>
@@ -244,45 +381,57 @@
         </div>
       </div>
       <div class="driver-grid hidden" id="driver-grid-legends">
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="mclaren">
           <div class="driver-card-visual legend">
-            <span class="driver-number">#12</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Ayrton_Senna_1991_Canada.jpg/440px-Ayrton_Senna_1991_Canada.jpg" alt="Ayrton Senna">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">12</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">AYRTON SENNA</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">McLaren / Williams</p>
             <p class="driver-stat">3× World Champion</p>
             <p class="driver-caption">"The maestro of the rain. Racing's eternal flame."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="ferrari">
           <div class="driver-card-visual legend">
-            <span class="driver-number">#1</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Michael_Schumacher_2011_Bahrain_2.jpg/440px-Michael_Schumacher_2011_Bahrain_2.jpg" alt="Michael Schumacher">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">1</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">MICHAEL SCHUMACHER</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Ferrari / Benetton</p>
             <p class="driver-stat">7× World Champion</p>
             <p class="driver-caption">"The Kaiser. Records that stood for a generation."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="ferrari">
           <div class="driver-card-visual legend">
-            <span class="driver-number">#1</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Niki_Lauda_1978_canada.jpg/440px-Niki_Lauda_1978_canada.jpg" alt="Niki Lauda">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">1</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">NIKI LAUDA</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Ferrari / McLaren</p>
             <p class="driver-stat">3× World Champion</p>
             <p class="driver-caption">"Walked through fire. Came back. Won again."</p>
           </div>
         </div>
-        <div class="driver-card reveal">
+        <div class="driver-card reveal" data-team="redbull">
           <div class="driver-card-visual legend">
-            <span class="driver-number">#5</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sebastian_Vettel_2019_portrait.jpg/440px-Sebastian_Vettel_2019_portrait.jpg" alt="Sebastian Vettel">
+            <div class="driver-card-gradient"></div>
+            <span class="driver-number">5</span>
           </div>
           <div class="driver-info">
             <h3 class="driver-name">SEBASTIAN VETTEL</h3>
+            <div class="name-underline"></div>
             <p class="driver-team">Red Bull / Ferrari</p>
             <p class="driver-stat">4× World Champion</p>
             <p class="driver-caption">"The finger wag. The dominance. A true gentleman racer."</p>
@@ -392,30 +541,36 @@
         THE THRILL OF F1
       </h2>
       <div class="thrill-block reveal">
-        <div class="thrill-image">
-          <img src="images/sparks.png" alt="F1 Sparks and Drama" loading="lazy">
+        <div class="thrill-image-container">
+          <div class="thrill-image">
+            <img src="images/sparks.png" alt="F1 Sparks and Drama" loading="lazy">
+          </div>
         </div>
         <div class="thrill-text">
           <h3 class="thrill-title">CRASHES & DRAMA</h3>
-          <p class="thrill-copy">Carbon fiber shatters at 300 km/h. Wheels interlock. Safety cars scramble the field. In F1, one moment of chaos rewrites the entire race — and sometimes, the entire season. It's not if drama will strike, but when.</p>
+          <p class="thrill-copy">Carbon fiber shatters at <strong>300 km/h</strong>. Wheels interlock. Safety cars scramble the field. In F1, <strong>one moment of chaos</strong> rewrites the entire race — and sometimes, the entire season. It's not if drama will strike, but when.</p>
         </div>
       </div>
       <div class="thrill-block reverse reveal">
-        <div class="thrill-image">
-          <img src="frames/frame_0030.jpg" alt="Qualifying Pressure" loading="lazy">
+        <div class="thrill-image-container">
+          <div class="thrill-image">
+            <img src="frames/frame_0030.jpg" alt="Qualifying Pressure" loading="lazy">
+          </div>
         </div>
         <div class="thrill-text">
           <h3 class="thrill-title">QUALIFYING PRESSURE</h3>
-          <p class="thrill-copy">One lap. One chance. Thousandths of a second separate heroes from also-rans. Qualifying is where drivers bare their souls — pushing the car to its absolute limit with no margin, no safety net, no second chance.</p>
+          <p class="thrill-copy"><strong>One lap. One chance.</strong> Thousandths of a second separate heroes from also-rans. Qualifying is where drivers bare their souls — pushing the car to its <strong>absolute limit</strong> with no margin, no safety net, no second chance.</p>
         </div>
       </div>
       <div class="thrill-block reveal">
-        <div class="thrill-image">
-          <img src="images/wheel_battle.png" alt="Wheel to Wheel" loading="lazy">
+        <div class="thrill-image-container">
+          <div class="thrill-image">
+            <img src="images/wheel_battle.png" alt="Wheel to Wheel" loading="lazy">
+          </div>
         </div>
         <div class="thrill-text">
           <h3 class="thrill-title">WHEEL-TO-WHEEL BATTLES</h3>
-          <p class="thrill-copy">Side by side into a braking zone at 340 km/h. Mirrors full of your rival's front wing. Nerves of steel, reflexes of a fighter pilot. This is wheel-to-wheel racing — the purest form of competition on four wheels.</p>
+          <p class="thrill-copy"><strong>Side by side</strong> into a braking zone at 340 km/h. Mirrors full of your rival's front wing. Nerves of steel, reflexes of a fighter pilot. This is <strong>wheel-to-wheel racing</strong> — the purest form of competition on four wheels.</p>
         </div>
       </div>
     </div>
@@ -434,34 +589,40 @@
       <div class="tech-showcase reveal">
         <div class="tech-hero-img">
           <img src="images/car_tech.png" alt="F1 Car Technical" loading="lazy">
+          <div class="tech-connector connector-1"></div>
+          <div class="tech-connector connector-2"></div>
+          <div class="tech-connector connector-3"></div>
+          <div class="tech-connector connector-4"></div>
+          <div class="tech-connector connector-5"></div>
+          <div class="tech-connector connector-6"></div>
         </div>
         <div class="tech-stats-grid">
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-1">
             <span class="material-symbols-outlined tech-stat-icon">local_fire_department</span>
             <h4 class="tech-stat-value">1,000+ HP</h4>
             <p class="tech-stat-label">Combined Power Output</p>
           </div>
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-2">
             <span class="material-symbols-outlined tech-stat-icon">bolt</span>
             <h4 class="tech-stat-value">1.6L V6 TURBO</h4>
             <p class="tech-stat-label">Hybrid Power Unit</p>
           </div>
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-3">
             <span class="material-symbols-outlined tech-stat-icon">speed</span>
             <h4 class="tech-stat-value">370 KM/H</h4>
             <p class="tech-stat-label">Top Speed</p>
           </div>
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-4">
             <span class="material-symbols-outlined tech-stat-icon">compress</span>
             <h4 class="tech-stat-value">5G FORCE</h4>
             <p class="tech-stat-label">Cornering Downforce</p>
           </div>
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-1" style="animation-delay: -1s;">
             <span class="material-symbols-outlined tech-stat-icon">timer</span>
             <h4 class="tech-stat-value">1.8 SEC</h4>
             <p class="tech-stat-label">Pit Stop Record</p>
           </div>
-          <div class="tech-stat-card">
+          <div class="tech-stat-card float-2" style="animation-delay: -2s;">
             <span class="material-symbols-outlined tech-stat-icon">diamond</span>
             <h4 class="tech-stat-value">798 KG</h4>
             <p class="tech-stat-label">Carbon Fiber Monocoque</p>
@@ -592,7 +753,9 @@
        ═══════════════════════════════════════ -->
   <footer class="site-footer" id="footer">
     <div class="footer-cta-area">
-      <h2 class="footer-headline">JOIN THE WORLD'S FASTEST FANDOM</h2>
+      <h2 class="footer-headline" id="footer-headline">
+        <span>JOIN</span> <span>THE</span> <span>WORLD'S</span> <span>FASTEST</span> <span>FANDOM</span>
+      </h2>
       <a href="#" class="footer-cta-button">SUBSCRIBE TO PULSE</a>
     </div>
     <div class="footer-divider"></div>
@@ -606,6 +769,11 @@
         <a href="#" class="footer-link">Terms of Service</a>
         <a href="#" class="footer-link">Contact</a>
         <a href="#" class="footer-link">Media Kit</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-icon reveal" style="transition-delay: 0.1s"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png" style="width:24px;filter:invert(1)" alt="LinkedIn"></a>
+        <a href="#" class="social-icon reveal" style="transition-delay: 0.2s"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/640px-X_logo_2023.svg.png" style="width:24px;filter:invert(1)" alt="X"></a>
+        <a href="#" class="social-icon reveal" style="transition-delay: 0.3s"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png" style="width:24px;filter:invert(1)" alt="Instagram"></a>
       </div>
     </div>
     <p class="footer-copyright">© 2025 F1 PULSE. ALL RIGHTS RESERVED.</p>

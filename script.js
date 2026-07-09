@@ -268,6 +268,155 @@
     sections.forEach(sec => observerNav.observe(sec));
   }
 
+  // ── Custom Cursor ──
+  function initCursor() {
+    const cursorOuter = document.getElementById('cursor-outer');
+    const cursorInner = document.getElementById('cursor-inner');
+    if (!cursorOuter || !cursorInner) return;
+
+    window.addEventListener('mousemove', (e) => {
+      cursorOuter.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+      cursorInner.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+    });
+
+    const hoverElements = document.querySelectorAll('a, button, .marquee-card, .race-card, .driver-card, .gallery-item, .faq-question');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorOuter.classList.add('hover');
+        cursorInner.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorOuter.classList.remove('hover');
+        cursorInner.classList.remove('hover');
+      });
+    });
+  }
+
+  // ── WebGL Aether Background ──
+  function initParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const gl = canvas.getContext('webgl2');
+    if (!gl) return;
+
+    const fragmentSource = `#version 300 es
+precision highp float;
+out vec4 O;
+uniform float time;
+uniform vec2 resolution;
+#define R resolution
+#define T time
+#define FC gl_FragCoord.xy
+
+float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+float line(vec2 uv, float y, float thickness, float speed, float offset) {
+  float wave = sin((uv.x * 8.0) + T * speed + offset) * 0.035;
+  float d = abs(uv.y - y - wave);
+  return smoothstep(thickness, 0.0, d);
+}
+void main() {
+  vec2 uv = (FC - 0.5 * R) / min(R.x, R.y);
+  vec2 p = uv;
+  float t = T * 0.65;
+  vec3 bg = vec3(0.015, 0.012, 0.012);
+  float r = length(p);
+  float angle = atan(p.y, p.x);
+  float tunnel = 0.03 / max(abs(sin(angle * 10.0 + t * 2.0)) * r, 0.015);
+  tunnel *= smoothstep(1.2, 0.05, r);
+  vec3 col = bg;
+  col += vec3(0.8, 0.02, 0.0) * tunnel * 0.35;
+  float redLines = line(p, -0.30, 0.008, 3.0, 0.0) + line(p, 0.18, 0.006, 2.4, 1.5) + line(p, 0.42, 0.004, 3.8, 2.7);
+  float blueLines = line(p, -0.12, 0.006, 3.5, 2.0) + line(p, 0.31, 0.005, 2.8, 4.0);
+  col += vec3(1.0, 0.02, 0.0) * redLines * 0.75;
+  col += vec3(0.0, 0.65, 1.0) * blueLines * 0.55;
+  vec2 grid = vec2(floor((p.x + t * 1.8) * 22.0), floor(p.y * 16.0));
+  float rnd = hash(grid);
+  float spark = step(0.965, rnd);
+  float sparkShape = smoothstep(0.025, 0.0, abs(fract((p.x + t * (1.0 + rnd)) * 22.0) - 0.5));
+  sparkShape *= smoothstep(0.03, 0.0, abs(fract(p.y * 16.0) - 0.5));
+  col += vec3(1.0, 0.28, 0.02) * spark * sparkShape * 0.55;
+  float centerGlow = smoothstep(0.75, 0.0, r);
+  col += vec3(0.12, 0.0, 0.0) * centerGlow;
+  col += vec3(0.0, 0.05, 0.09) * centerGlow;
+  float vignette = smoothstep(1.05, 0.25, r);
+  col *= vignette;
+  col = pow(col, vec3(0.85));
+  O = vec4(col, 1.0);
+}`;
+
+    const vertShaderSource = `#version 300 es
+in vec4 position;
+void main() { gl_Position = position; }`;
+
+    const createShader = (type, source) => {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
+      }
+      return shader;
+    };
+
+    const vs = createShader(gl.VERTEX_SHADER, vertShaderSource);
+    const fs = createShader(gl.FRAGMENT_SHADER, fragmentSource);
+    if (!vs || !fs) return;
+
+    const program = gl.createProgram();
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    const posBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+
+    const posLoc = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+    const timeLoc = gl.getUniformLocation(program, 'time');
+    const resLoc = gl.getUniformLocation(program, 'resolution');
+
+    let startTime = performance.now();
+
+    function render(now) {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        gl.viewport(0, 0, width, height);
+      }
+      gl.uniform1f(timeLoc, (now - startTime) / 1000);
+      gl.uniform2f(resLoc, width, height);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      requestAnimationFrame(render);
+    }
+    render(startTime);
+  }
+
+  // ── Parallax for Thrill Images ──
+  function initParallax() {
+    const images = document.querySelectorAll('.thrill-image');
+    if (!images.length) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      images.forEach((img, i) => {
+        const rect = img.parentElement.getBoundingClientRect();
+        // Calculate offset based on element position relative to viewport center
+        const offset = (rect.top - window.innerHeight / 2) * 0.15;
+        // Clamp offset to prevent breaking the container bounds
+        const clampedOffset = Math.max(-15, Math.min(15, offset));
+        img.style.transform = `translateY(${clampedOffset}%)`;
+      });
+    }, { passive: true });
+  }
+
   // ── Init ──
   function init() {
     window.scrollTo(0, 0);
@@ -279,6 +428,9 @@
       initFAQ();
       initDriverTabs();
       initActiveNav();
+      initCursor();
+      initParticles();
+      initParallax();
     }, 100);
   }
 
