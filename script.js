@@ -8,7 +8,7 @@
 
   // ── Configuration ──
   const TOTAL_FRAMES = 485;
-  const SCROLL_PER_FRAME = 1.5;
+  const SCROLL_PER_FRAME = 1.75;
   const FRAME_PATH = (i) => `frames/WhatsApp Video 2026-07-16 at 20.43.56-${String(i).padStart(4, '0')}.webp`;
   const END_THRESHOLD = 0.90;
 
